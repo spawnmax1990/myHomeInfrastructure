@@ -1,0 +1,11 @@
+Host master1
+  Hostname 192.168.13.53
+  User ubnt
+
+Host worker1
+  Hostname 192.168.13.54
+  User ubnt
+
+Host worker2
+  Hostname 192.168.13.55
+  User ubnt
