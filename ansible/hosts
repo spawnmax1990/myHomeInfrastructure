@@ -1,6 +1,9 @@
+[all:vars]
+ansible_ssh_private_key_file=~/.ssh/iac
+
 [masters]
 
-master1
+master1  # ansible_ssh_private_key_file=/home/adminka/.ssh/iac
 
 [nodes]
 

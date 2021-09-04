@@ -1,0 +1,25 @@
+---
+- name: Remove services for k8s  # Название плейбука
+  hosts: all  # На каких хостах выполнять
+  become: yes  # Выполнять от суперпользователя
+  gather_facts: no  # Не собирать факты о хосте
+  
+  tasks:
+          - name: Disable SELinux
+            service:
+                    name: apparmor
+                    enabled: no
+                    state: stopped
+          - name: Disable Firewall
+            service:
+                    name: ufw
+                    enabled: no
+                    state: stopped
+          - name: Disable Swap
+            shell:
+                    cmd: swapoff -a
+          - name: Commenting a line using the regualr expressions in Ansible.
+            replace:
+                    path: /etc/fstab
+                    regexp: '(.*swap.*)'
+                    replace: '#\1'

@@ -1,0 +1,21 @@
+---
+- name: test
+  # Название плейбука
+  hosts: all
+  # На каких хостах выполнять
+  become: yes
+  # Выполнять от суперпользователя
+  gather_facts: no
+  # Не собирать факты о хосте
+  
+  tasks:
+          - name: install update
+            apt:
+                   update_cache: yes
+                   upgrade: "yes"
+                   autoremove: yes
+
+          - name: install mc
+            apt:
+                    name: mc
+                    state: latest
