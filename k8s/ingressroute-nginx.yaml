@@ -1,0 +1,19 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingresstraefik
+  namespace: default
+spec:
+  entryPoints:                      # [1]
+    - maxim.ko
+  routes:                           # [2]
+  - kind: Rule
+    match: Host(`maxim.ko`) # [3]
+    services:                       # [8]
+    - kind: Service
+      name: service-for-nginx
+      namespace: default
+      port: 80                      # [9]
+      scheme: https
+      strategy: RoundRobin
