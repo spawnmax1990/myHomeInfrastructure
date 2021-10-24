@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flatris
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flatris
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      name: flatris-pod
+      labels:
+        app: flatris
+    spec:
+      containers:
+      - image: nefalem/flatris
+        name: flatris
+        ports:
+        - containerPort: 3000
