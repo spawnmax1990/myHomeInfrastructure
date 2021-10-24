@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment-nginx
+  name: nginx-deployment
 spec:
   replicas: 3
   selector:
@@ -15,6 +15,7 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      name: nginx-pod
       labels:
         app: my-nginx
     spec:
